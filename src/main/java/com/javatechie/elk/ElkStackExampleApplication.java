@@ -40,10 +40,20 @@ public class ElkStackExampleApplication {
 
 
     private List<User> getUsers() {
+
+        new Thread().run();
+
+        getAccounts();
         return Stream.of(new User(1, "John"),
                         new User(2, "Shyam"),
                         new User(3, "Rony"),
                         new User(4, "Raghu"))
+                .collect(Collectors.toList());
+    }
+
+    private List<String> getAccounts() {
+
+        return Stream.of("123", "456", "789")
                 .collect(Collectors.toList());
     }
 
