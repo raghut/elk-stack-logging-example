@@ -1,5 +1,6 @@
 package com.javatechie.elk;
 
+import lombok.val;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -41,9 +42,7 @@ public class ElkStackExampleApplication {
 
     private List<User> getUsers() {
 
-        new Thread().run();
-
-        getAccounts();
+        val accounts = getAccounts();
         return Stream.of(new User(1, "John"),
                         new User(2, "Shyam"),
                         new User(3, "Rony"),
@@ -52,6 +51,8 @@ public class ElkStackExampleApplication {
     }
 
     private List<String> getAccounts() {
+        val t = new Thread();
+        t.start();
 
         return Stream.of("123", "456", "789")
                 .collect(Collectors.toList());
